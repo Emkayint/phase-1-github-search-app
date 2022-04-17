@@ -11,3 +11,15 @@
 ul {
   list-style: none;
 }
+
+span{
+  color: blue;
+}
+
+img{
+  border-radius: 50%;
+}
+
+p{
+  text-align: center;
+}

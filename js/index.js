@@ -4,31 +4,28 @@ document.addEventListener("DOMContentLoaded", ()=>{
         e.preventDefault()
         let wordToSearch = document.getElementById('search')
         let name = wordToSearch.value.split(" ").join('')
-        console.log(name)
+        // console.log(name)
+        searchUsers(name)
     })
     
 })
 
 function searchUsers(word){
-    fetch(`https://api.github.com/user/emkayint`)
+    fetch(`https://api.github.com/users/${word}`)
     .then( res => res.json())
-    .then( data => console.log(data))
+    .then(displayinfo)
 }
 
-searchUsers()
 
-function displayinfo(dataset){
-    dataset.forEach(data => {
+function displayinfo(data){
         let elem = document.getElementById('user-list')
         let li = document.createElement('li')
         li.innerHTML = `<div class= "card"> 
             <img src = "${data.avatar_url}" class = 'image-fluid' style = "width: 300px; height: 300px">
-            <p> ${data.login} </p>
-            <p> ${data.name} </p>
-            <p> ${data.location} </p>
+            <p> <span> Username </span> ${data.login} </p>
+            <p> <span>Name</> ${data.name} </p>
+            <p> <span>location</span> ${data.location} </p>
 
         </div> `
-
         elem.appendChild(li)
-    })
 }
